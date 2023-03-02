@@ -32,19 +32,21 @@ export default function Form({ type }: { type: "login" | "register" }) {
           });
         } else {
           const target = e.target as typeof e.target & {
-            name:           { value: string };
-            email:          { value: string };
-            password:       { value: string };
-            year_of_birth:  { value: number };
-            phone_number:   { value: string };
-            agency_name:    { value: string };
+            name: { value: string };
+            email: { value: string };
+            password: { value: string };
+            year_of_birth: { value: number };
+            gender: { value: string };
+            phone_number: { value: string };
+            institution: { value: string };
           };
           const name = target.name.value;
           const email = target.email.value;
           const password = target.password.value;
           const year_of_birth = target.year_of_birth.value;
+          const gender = target.gender.value;
           const phone_number = target.phone_number.value;
-          const agency_name = target.agency_name.value;
+          const institution = target.institution.value;
           fetch("/api/auth/register", {
             method: "POST",
             headers: {
@@ -55,8 +57,9 @@ export default function Form({ type }: { type: "login" | "register" }) {
               email: email,
               password: password,
               year_of_birth: year_of_birth,
+              gender: gender,
               phone_number: phone_number,
-              agency_name: agency_name,
+              institution: institution,
             }),
           }).then(async (res) => {
             setLoading(false);
@@ -79,7 +82,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
             <label
               htmlFor="name"
               className="block text-xs text-gray-600 uppercase"
-              >
+            >
               Full Name
             </label>
             <input
@@ -89,7 +92,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
               autoComplete="off"
               required
               className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
-              />
+            />
           </div>
           <div>
             <label
@@ -110,6 +113,18 @@ export default function Form({ type }: { type: "login" | "register" }) {
           </div>
           <div>
             <label
+              htmlFor="gender"
+              className="block text-xs text-gray-600 uppercase"
+            >
+              Gender
+            </label>
+            <input type="radio" id="male" name="gender" value="Male" />
+            Male
+            <input type="radio" id="female" name="gender" value="Female" />
+            Female
+          </div>
+          <div>
+            <label
               htmlFor="phone_number"
               className="block text-xs text-gray-600 uppercase"
             >
@@ -126,14 +141,14 @@ export default function Form({ type }: { type: "login" | "register" }) {
           </div>
           <div>
             <label
-              htmlFor="agency_name"
+              htmlFor="institution"
               className="block text-xs text-gray-600 uppercase"
             >
-              Agency Name
+              Institution
             </label>
             <input
-              id="agency_name"
-              name="agency_name"
+              id="institution"
+              name="institution"
               type="text"
               autoComplete="off"
               required

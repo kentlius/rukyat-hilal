@@ -14,7 +14,8 @@ model User {
   password      String
   year_of_birth Int
   phone_number  String
-  agency_name   String
+  institution   String
+  gender        String
   isAdmin       Boolean  @default(false)
   Rukyat        Rukyat[]
 }

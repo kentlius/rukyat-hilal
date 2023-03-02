@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { hash } from "bcryptjs";
 
 export async function POST(request: Request) {
-  const { name, email, password, year_of_birth, phone_number, agency_name } =
+  const { name, email, password, year_of_birth, gender, phone_number, institution } =
     await request.json();
   const exists = await prisma.user.findUnique({
     where: {
@@ -18,8 +18,9 @@ export async function POST(request: Request) {
         email,
         password: await hash(password, 10),
         year_of_birth: parseInt(year_of_birth, 10),
+        gender,
         phone_number,
-        agency_name,
+        institution,
       },
     });
     return new Response(JSON.stringify(user));
