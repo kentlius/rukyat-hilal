@@ -4,7 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import LoadingDots from "@/components/loading-dots";
 import toast from "react-hot-toast";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Form({ type }: { type: "login" | "register" }) {
@@ -83,7 +83,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
               htmlFor="name"
               className="block text-xs text-gray-600 uppercase"
             >
-              Full Name
+              Nama Lengkap
             </label>
             <input
               id="name"
@@ -99,7 +99,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
               htmlFor="year_of_birth"
               className="block text-xs text-gray-600 uppercase"
             >
-              Year of Birth
+              Tahun Lahir
             </label>
             <input
               id="year_of_birth"
@@ -116,19 +116,25 @@ export default function Form({ type }: { type: "login" | "register" }) {
               htmlFor="gender"
               className="block text-xs text-gray-600 uppercase"
             >
-              Gender
+              Jenis Kelamin
             </label>
-            <input type="radio" id="male" name="gender" value="Male" />
-            Male
-            <input type="radio" id="female" name="gender" value="Female" />
-            Female
+            <div>
+              <div className="space-x-2">
+                <input type="radio" id="male" name="gender" value="Male" />
+                <label htmlFor="male">Male</label>
+              </div>
+              <div className="space-x-2">
+                <input type="radio" id="female" name="gender" value="Female" />
+                <label htmlFor="female">Female</label>
+              </div>
+            </div>
           </div>
           <div>
             <label
               htmlFor="phone_number"
               className="block text-xs text-gray-600 uppercase"
             >
-              Phone Number
+              Nomor Telepon
             </label>
             <input
               id="phone_number"
@@ -144,7 +150,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
               htmlFor="institution"
               className="block text-xs text-gray-600 uppercase"
             >
-              Institution
+              Institusi
             </label>
             <input
               id="institution"
@@ -162,7 +168,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           htmlFor="email"
           className="block text-xs text-gray-600 uppercase"
         >
-          Email Address
+          Alamat Email
         </label>
         <input
           id="email"
@@ -178,7 +184,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           htmlFor="password"
           className="block text-xs text-gray-600 uppercase"
         >
-          Password
+          Kata Sandi
         </label>
         <input
           id="password"
@@ -199,10 +205,10 @@ export default function Form({ type }: { type: "login" | "register" }) {
         {loading ? (
           <LoadingDots color="#808080" />
         ) : (
-          <p>{type === "login" ? "Sign In" : "Sign Up"}</p>
+          <p>{type === "login" ? "Masuk" : "Daftar"}</p>
         )}
       </button>
-      {type === "login" ? (
+      {/* {type === "login" ? (
         <p className="text-center text-sm text-gray-600">
           Don&apos;t have an account?{" "}
           <Link href="/register" className="font-semibold text-gray-800">
@@ -218,7 +224,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           </Link>{" "}
           instead.
         </p>
-      )}
+      )} */}
     </form>
   );
 }
