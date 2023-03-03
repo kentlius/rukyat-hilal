@@ -12,19 +12,50 @@ model User {
   name          String
   email         String   @unique
   password      String
-  year_of_birth Int
-  phone_number  String
+  role          Role     @default(USER)
+  phoneNumber   String
   institution   String
+  yearOfBirth   Int
   gender        String
-  isAdmin       Boolean  @default(false)
-  Rukyat        Rukyat[]
+  hilals        Hilal[]
 }
 
-model Rukyat {
-  id          Int    @id @default(autoincrement())
-  link_photo  String
+model Hilal {
+  id          Int      @id @default(autoincrement())
+  url         String   // temporary
+  images      Photo[]  @ignore
+  ownerId     Int
+  owner       User     @relation(fields: [ownerId], references: [id])
   description String
-  taken_date  String
-  userId      Int
-  User        User   @relation(fields: [userId], references: [id])
+  status      Status   @default(PENDING)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Photo {
+  id        Int      @id @default(autoincrement())
+  url       String
+  type      Type
+  hilalId   Int
+  hilal     Hilal    @relation(fields: [hilalId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@ignore
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum Type {
+  CAMERA
+  TELESCOPE
 }
