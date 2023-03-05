@@ -35,6 +35,7 @@ export const useCamera = ()=> {
                     canvas.style.top=clientTop.toString();
                     canvas.setAttribute('width', videoWidth.toString());
                     canvas.setAttribute('height', videoHeight.toString());
+                    console.log(video.videoHeight, video.videoWidth, canvas.height, canvas.width)
                     video.play();
                 }
             }).catch((e)=>{
