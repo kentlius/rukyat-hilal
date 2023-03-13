@@ -35,17 +35,17 @@ export default function Form({ type }: { type: "login" | "register" }) {
             name: { value: string };
             email: { value: string };
             password: { value: string };
-            year_of_birth: { value: number };
+            yearOfBirth: { value: number };
             gender: { value: string };
-            phone_number: { value: string };
+            phoneNumber: { value: string };
             institution: { value: string };
           };
           const name = target.name.value;
           const email = target.email.value;
           const password = target.password.value;
-          const year_of_birth = target.year_of_birth.value;
+          const yearOfBirth = target.yearOfBirth.value;
           const gender = target.gender.value;
-          const phone_number = target.phone_number.value;
+          const phoneNumber = target.phoneNumber.value;
           const institution = target.institution.value;
           fetch("/api/auth/register", {
             method: "POST",
@@ -56,9 +56,9 @@ export default function Form({ type }: { type: "login" | "register" }) {
               name: name,
               email: email,
               password: password,
-              year_of_birth: year_of_birth,
+              yearOfBirth: yearOfBirth,
               gender: gender,
-              phone_number: phone_number,
+              phoneNumber: phoneNumber,
               institution: institution,
             }),
           }).then(async (res) => {
@@ -96,14 +96,14 @@ export default function Form({ type }: { type: "login" | "register" }) {
           </div>
           <div>
             <label
-              htmlFor="year_of_birth"
+              htmlFor="yearOfBirth"
               className="block text-xs text-gray-600 uppercase"
             >
               Tahun Lahir
             </label>
             <input
-              id="year_of_birth"
-              name="year_of_birth"
+              id="yearOfBirth"
+              name="yearOfBirth"
               type="number"
               min="0"
               autoComplete="off"
@@ -131,14 +131,14 @@ export default function Form({ type }: { type: "login" | "register" }) {
           </div>
           <div>
             <label
-              htmlFor="phone_number"
+              htmlFor="phoneNumber"
               className="block text-xs text-gray-600 uppercase"
             >
               Nomor Telepon
             </label>
             <input
-              id="phone_number"
-              name="phone_number"
+              id="phoneNumber"
+              name="phoneNumber"
               type="text"
               autoComplete="off"
               required

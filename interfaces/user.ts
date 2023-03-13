@@ -3,9 +3,9 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  year_of_birth: number;
+  yearOfBirth: number;
   gender: string;
-  phone_number: string;
+  phoneNumber: string;
   institution: string;
   isAdmin: boolean;
 }
