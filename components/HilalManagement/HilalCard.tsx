@@ -29,14 +29,20 @@ export default function HilalCard (
                 </div>
             </div>
             <div className="flex">
-                <div className="hover:cursor-pointer flex justify-center w-1/3 p-4 bg-blue-300 hover:bg-blue-500 rounded-bl-md" 
+                <div
+                className={`flex justify-center w-1/3 p-4 rounded-bl-md
+                    ${content.status!="PENDING" ? "hover:cursor-not-allowed bg-slate-400" : "hover:cursor-pointer bg-blue-300 hover:bg-blue-500"}
+                `}
                 onClick={() => {
-                    setModalOpen("RequestModal");
-                    setModalContent(content);
+                    {content.status=="PENDING" &&
+                        setModalOpen("RequestModal");
+                        setModalContent(content);
+                    }
                 }}>
-                    Request
+                    {content.status=="PENDING" ? "Request" : content.status}
                 </div>
-                <div className="hover:cursor-pointer flex justify-center w-1/3 p-4 bg-yellow-300 hover:bg-yellow-500"
+                <div 
+                className="hover:cursor-pointer flex justify-center w-1/3 p-4 bg-yellow-300 hover:bg-yellow-500"
                 onClick={() => {
                     setModalOpen("EditModal");
                     setModalContent(content);

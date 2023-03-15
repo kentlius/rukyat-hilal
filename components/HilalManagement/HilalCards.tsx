@@ -3,6 +3,8 @@
 import { useState } from "react";
 import HilalCard from "./HilalCard";
 import RequestModal from "./RequestModal";
+import EditModal from "./EditModal";
+import DeleteModal from "./DeleteModal";
 
 export default function HilalCards ({hilals}: {hilals: any}) {
     const [modalOpen, setModalOpen] = useState();
@@ -20,6 +22,20 @@ export default function HilalCards ({hilals}: {hilals: any}) {
             ))}
             {modalOpen == "RequestModal" && 
                 <RequestModal 
+                    setModalContent={setModalContent}
+                    setModalOpen={setModalOpen}
+                    content={modalContent}
+                />
+            }
+            {modalOpen == "EditModal" && 
+                <EditModal 
+                    setModalContent={setModalContent}
+                    setModalOpen={setModalOpen}
+                    content={modalContent}
+                />
+            }
+            {modalOpen == "DeleteModal" && 
+                <DeleteModal 
                     setModalContent={setModalContent}
                     setModalOpen={setModalOpen}
                     content={modalContent}
