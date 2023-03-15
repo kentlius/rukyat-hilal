@@ -7,7 +7,6 @@ export default function FinderBulan() {
     <div>
         <FullScreenMobileView></FullScreenMobileView>
         <AzimuthAltitudeCalculator></AzimuthAltitudeCalculator>
-        <DeviceOrientationChecker></DeviceOrientationChecker>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 
+// @ts-ignore
 export async function GET(request: Request, { params }) {
   const id = params.id;
   const data = await prisma.hilal.findUnique({
@@ -10,6 +11,7 @@ export async function GET(request: Request, { params }) {
   return new Response(JSON.stringify(data));
 }
 
+// @ts-ignore
 export async function DELETE(request: Request, { params }) {
   const id = params.id;
   const data = await prisma.hilal.delete({
@@ -20,6 +22,7 @@ export async function DELETE(request: Request, { params }) {
   return new Response(JSON.stringify(data));
 }
 
+// @ts-ignore
 export async function PUT(request: Request, { params }) {
   const id = params.id;
   const { url, description } = await request.json();
