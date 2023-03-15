@@ -25,7 +25,7 @@ export async function DELETE(request: Request, { params }) {
 // @ts-ignore
 export async function PUT(request: Request, { params }) {
   const id = params.id;
-  const { url, description } = await request.json();
+  const { url, description, status } = await request.json();
   const data = await prisma.hilal.update({
     where: {
       id: Number(id),
@@ -33,6 +33,7 @@ export async function PUT(request: Request, { params }) {
     data: {
       url,
       description,
+      status,
     },
   });
   return new Response(JSON.stringify(data));
