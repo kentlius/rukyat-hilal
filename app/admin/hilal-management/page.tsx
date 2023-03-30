@@ -3,9 +3,13 @@ import { Suspense } from "react";
 import HilalCards from "@/components/HilalManagement/HilalCards"
 
 async function getHilals() {
-    const hilals = await prisma.hilal.findMany();
+    const hilals = await prisma.hilal.findMany({
+      include: {
+        images: true,
+      },
+    });
     return hilals;
-}
+  }
 
 export default async function HilalManagement() {
     const hilals = await getHilals();

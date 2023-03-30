@@ -7,7 +7,14 @@ import { getServerSession } from "next-auth/next";
 // export const revalidate = 10;
 
 async function getHilals() {
-  const hilals = await prisma.hilal.findMany();
+  const hilals = await prisma.hilal.findMany({
+    include: {
+      images: true,
+    },
+    where: {
+      status: "APPROVED",
+    },
+  });
   return hilals;
 }
 
@@ -43,7 +50,7 @@ export default async function Home() {
               <Image
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                 style={{ transform: "translate3d(0, 0, 0)" }}
-                src={`https://picsum.photos/720/480`}
+                src={hilal.images[0].url}
                 alt={hilal.description}
                 width={720}
                 height={480}
