@@ -14,7 +14,7 @@ export default function HilalCard (
             <div className="w-full rounded-t-md">
                 <Image
                     className="flex w-full object-cover rounded-t-md"
-                    src={content.url}
+                    src={content.images[0].url}
                     alt="hilal"
                     width={300}
                     height={200}

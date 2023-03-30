@@ -22,8 +22,7 @@ model User {
 
 model Hilal {
   id          Int      @id @default(autoincrement())
-  url         String   // temporary
-  images      Photo[]  @ignore
+  images      Photo[]
   ownerId     Int
   owner       User     @relation(fields: [ownerId], references: [id])
   description String
@@ -33,15 +32,13 @@ model Hilal {
 }
 
 model Photo {
-  id        Int      @id @default(autoincrement())
+  id        String   @id
   url       String
   type      Type
   hilalId   Int
   hilal     Hilal    @relation(fields: [hilalId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@ignore
 }
 
 enum Role {

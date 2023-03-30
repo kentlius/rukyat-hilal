@@ -8,10 +8,7 @@ export const metadata = {
   description: 'Sistem Informasi Rukyat Hilal',
 }
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: "--font-inter",
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export default async function RootLayout({
   children,
@@ -21,7 +18,7 @@ export default async function RootLayout({
   const AuthStatusDiv = await AuthStatus();
   return (
     <html lang="en">
-      <body className={inter.variable}>
+      <body>
         <Toaster />
         {AuthStatusDiv}
         {children}
