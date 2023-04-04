@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { Suspense } from "react";
-import HilalCards from "@/components/HilalManagement/HilalCards"
+import HilalCards from "@/components/HilalManagement/HilalCards";
 
 async function getHilals() {
     const hilals = await prisma.hilal.findMany({
