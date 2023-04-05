@@ -1,27 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { Photo } from "@/interfaces/photo";
 
-export default function HilalCarousel() {
-  // dummy photos
-  const photos = [
-    "https://res.cloudinary.com/ddxoaaodo/image/upload/v1680582593/rukyat-hilal/xhsmckc1qfuvvkab9dz9.jpg",
-    "https://res.cloudinary.com/ddxoaaodo/image/upload/v1680670648/rukyat-hilal/jhnpj8pritwulve9iqe9.jpg",
-    "https://res.cloudinary.com/ddxoaaodo/image/upload/v1680671785/rukyat-hilal/zefibw1l76a95umjvwq9.jpg",
-  ];
-
+export default function HilalCarousel (
+  { images }: {
+    images: Photo[],
+  }
+) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // go to previous slide
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? photos.length - 1 : currentIndex - 1;
+    const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   // go to next  slide
   const nextSlide = () => {
-    const isLastSlide = currentIndex === photos.length - 1;
+    const isLastSlide = currentIndex === images.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
@@ -34,7 +32,7 @@ export default function HilalCarousel() {
   return (
     <div className='max-w-[1400px] h-5/6 md:h-[95%] w-full m-auto py-16 px-4 relative group'>
       <div
-        style={{ backgroundImage: `url(${photos[currentIndex]})` }}
+        style={{ backgroundImage: `url(${images[currentIndex].url})` }}
         className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
       ></div>
       {/* Left Arrow */}
@@ -50,7 +48,7 @@ export default function HilalCarousel() {
         </div>
       </div>
       <div className='flex top-4 justify-center py-2'>
-        {photos.map((photo, slideIndex) => (
+        {images.map((image, slideIndex) => (
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
