@@ -8,6 +8,12 @@ async function getHilal(hilalId: number) {
             id: Number(hilalId),
         },
         include:{
+            owner: {
+                select: {
+                    name: true,
+                    institution: true,
+                },
+            },
             images: true,
         }
     });
@@ -23,7 +29,20 @@ export default async function HilalDetail (
 ) {
     // casting params.id to number type
     const hilalId = Number(params.id);
-    
+    // option for date string
+    const dateOpt = {
+        day: '2-digit' as const, 
+        month: 'long' as const, 
+        year: 'numeric' as const,
+    };
+    const timeOpt = {
+        timeZone: 'Asia/Jakarta' as const, 
+        hour: '2-digit' as const, 
+        minute: '2-digit' as const, 
+        hour12: false as const, // format as 24-hour time
+    };
+    // option for time string
+
     if(!isNaN(hilalId)) {
         const hilal = await getHilal(hilalId);
         
@@ -49,25 +68,32 @@ export default async function HilalDetail (
                                 </h2>
                                 <p className="">
                                     <span className="font-semibold">Tanggal : </span> 
-                                    2 April 2022</p>
+                                    { hilal.createdAt.toLocaleDateString('en-GB', dateOpt) }
+                                </p>
                                 <p className="">
                                     <span className="font-semibold">Waktu : </span>
-                                    18:30 WIB</p>
+                                    { hilal.createdAt.toLocaleTimeString('en-US', timeOpt) } WIB
+                                </p>
                                 <p className="">
                                     <span className="font-semibold">Lokasi : </span>
-                                    Kupang</p>
+                                    Kupang
+                                </p>
                                 <p className="">
                                     <span className="font-semibold">Lembaga : </span>
-                                    Stasiun Geofisika Kupang</p>
+                                    { hilal.owner.institution }
+                                </p>
                                 <p className="">
                                     <span className="font-semibold">Jenis Teleskop : </span>
-                                    NextStar 130SLT</p>
+                                    NextStar 130SLT
+                                </p>
                                 <p className="">
                                     <span className="font-semibold">Nama Pengamat : </span>
-                                    Michael Budiman</p>
+                                    { hilal.owner.name }
+                                </p>
                                 <p className="">
                                     <span className="font-semibold">Tinggi Hilal : </span>
-                                    11 11 45</p>
+                                    11 11 45
+                                </p>
                             </div>
                         </div>
                     </> 

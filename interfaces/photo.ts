@@ -3,6 +3,4 @@ export interface Photo {
     url: string,
     type: string,
     hilalId: number,
-    createdAt: string,
-    updateAt: string,
 }
