@@ -26,8 +26,8 @@ export default async function Home() {
     <>
       <main className="mx-auto max-w-[1960px] p-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-          <div className="after:content relative col-span-1 row-span-2 flex flex-col items-center justify-end gap-4 overflow-hidden border rounded-lg px-6 pb-16 pt-64 text-center bg-gray-200 after:pointer-events-none after:absolute after:inset-0 after:rounded-lg lg:pt-0">
-            <h1 className="mt-8 mb-4 text-base font-bold uppercase tracking-widest">
+          <div className="after:content relative col-span-1 row-span-2 flex flex-col items-center justify-end gap-4 overflow-hidden rounded-lg border bg-gray-200 px-6 pb-16 pt-64 text-center after:pointer-events-none after:absolute after:inset-0 after:rounded-lg lg:pt-0">
+            <h1 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest">
               Imahnoong Hilal Gallery
             </h1>
             <p className="max-w-[40ch] sm:max-w-[32ch]">
@@ -45,7 +45,7 @@ export default async function Home() {
           {hilals.map((hilal) => (
             <div
               key={hilal.id}
-              className="after:content group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+              className="after:content after:shadow-highlight group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
             >
               <Image
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"

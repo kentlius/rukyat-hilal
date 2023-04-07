@@ -1,12 +1,12 @@
 "use client";
 import FullScreenMobileView from "@/components/fullScreenMobileView";
-import {AzimuthAltitudeCalculator} from "@/components/azimuthAltitudeCalculator";
+import { AzimuthAltitudeCalculator } from "@/components/azimuthAltitudeCalculator";
 
 export default function FinderBulan() {
   return (
     <div>
-        <FullScreenMobileView></FullScreenMobileView>
-        <AzimuthAltitudeCalculator></AzimuthAltitudeCalculator>
+      <FullScreenMobileView></FullScreenMobileView>
+      <AzimuthAltitudeCalculator></AzimuthAltitudeCalculator>
     </div>
   );
 }

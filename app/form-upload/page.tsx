@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function FormUpload() {
   return (
     <div className="flex h-screen">
-      <div className="w-screen h-screen flex flex-col space-y-5 justify-center items-center">
+      <div className="flex h-screen w-screen flex-col items-center justify-center space-y-5">
         <h1 className="text-4xl">Form Upload Hilal</h1>
         <Link href="/">Home</Link>
         <UploadForm />
