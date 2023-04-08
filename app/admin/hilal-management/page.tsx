@@ -4,13 +4,13 @@ import HilalCards from "@/components/HilalManagement/HilalCards";
 import HilalSearch from "@/components/HilalSearch";
 
 async function getHilals() {
-    const hilals = await prisma.hilal.findMany({
-      include: {
-        images: true,
-      },
-    });
-    return hilals;
-  }
+  const hilals = await prisma.hilal.findMany({
+    include: {
+      images: true,
+    },
+  });
+  return hilals;
+}
 
 export default async function HilalManagement(
   { searchParams }: {

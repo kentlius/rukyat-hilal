@@ -52,25 +52,35 @@ export default function HilalCard (
                         setModalOpen("RequestModal");
                         setModalContent(content);
                     }
-                }}>
-                    {content.status=="PENDING" ? "Request" : content.status}
-                </div>
-                <div 
-                className="hover:cursor-pointer flex justify-center w-1/3 p-4 bg-yellow-300 hover:bg-yellow-500"
-                onClick={() => {
-                    setModalOpen("EditModal");
-                    setModalContent(content);
-                }}>
-                    Edit
-                </div>
-                <div className="hover:cursor-pointer flex justify-center w-1/3 p-4 bg-red-300 hover:bg-red-500 rounded-br-md"
-                onClick={() => {
-                    setModalOpen("DeleteModal");
-                    setModalContent(content);
-                }}>
-                    Delete
-                </div>
-            </div>
+                `}
+          onClick={() => {
+            {
+              content.status == "PENDING" && setModalOpen("RequestModal");
+              setModalContent(content);
+            }
+          }}
+        >
+          {content.status == "PENDING" ? "Request" : content.status}
         </div>
-    );
+        <div
+          className="flex w-1/3 justify-center bg-yellow-300 p-4 hover:cursor-pointer hover:bg-yellow-500"
+          onClick={() => {
+            setModalOpen("EditModal");
+            setModalContent(content);
+          }}
+        >
+          Edit
+        </div>
+        <div
+          className="flex w-1/3 justify-center rounded-br-md bg-red-300 p-4 hover:cursor-pointer hover:bg-red-500"
+          onClick={() => {
+            setModalOpen("DeleteModal");
+            setModalContent(content);
+          }}
+        >
+          Delete
+        </div>
+      </div>
+    </div>
+  );
 }

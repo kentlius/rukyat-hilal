@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Register() {
   return (
-    <div className="flex flex-col gap-8 p-4 items-center justify-center bg-gray-50">
+    <div className="flex flex-col items-center justify-center gap-8 bg-gray-50 p-4">
       <a href="/">
         <Image
           src="/logo.png"
