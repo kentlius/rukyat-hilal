@@ -9,6 +9,20 @@ export default function HilalCard (
     content: any,
 }
 ) {
+    // date transformator
+    const tranformDate = (dateString: string) => {
+        const date = new Date(dateString);
+        // option for date string
+        const dateOpt = {
+            day: '2-digit' as const, 
+            month: 'long' as const, 
+            year: 'numeric' as const,
+        };
+        const formattedDate = date.toLocaleDateString('en-GB', dateOpt);
+
+        return(formattedDate);
+    }
+
     return (
         <div className="card flex flex-col w-4/5 md:w-2/5 rounded-md shadow-lg">
             <div className="w-full rounded-t-md">
@@ -25,7 +39,7 @@ export default function HilalCard (
                     {content.description}
                 </div>
                 <div className="text-right w-2/5">
-                    {content.createdAt}
+                    { tranformDate(content.createdAt as string) }
                 </div>
             </div>
             <div className="flex">
