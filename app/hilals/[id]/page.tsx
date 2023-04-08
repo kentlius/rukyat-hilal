@@ -35,13 +35,13 @@ export default async function HilalDetail (
         month: 'long' as const, 
         year: 'numeric' as const,
     };
+    // option for time string
     const timeOpt = {
         timeZone: 'Asia/Jakarta' as const, 
         hour: '2-digit' as const, 
         minute: '2-digit' as const, 
         hour12: false as const, // format as 24-hour time
     };
-    // option for time string
 
     if(!isNaN(hilalId)) {
         const hilal = await getHilal(hilalId);
