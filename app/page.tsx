@@ -3,6 +3,7 @@ import Link from "next/link";
 import SignOut from "@/components/sign-out";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
+import HilalSearch from "@/components/HilalSearch";
 
 // export const revalidate = 10;
 
@@ -18,13 +19,21 @@ async function getHilals() {
   return hilals;
 }
 
-export default async function Home() {
+export default async function Home(
+  { searchParams }: {
+    searchParams: { [key: string]: string | string[] | undefined },
+  }
+) {
   const hilals = await getHilals();
   const session = await getServerSession();
+  const searchPlaceholder = "Search by description key words (ex: 'ramadhan')";
 
   return (
     <>
       <main className="mx-auto max-w-[1960px] p-4">
+        <div className="flex flex-col mt-7">
+          <HilalSearch baseUrl={``} placeholder={searchPlaceholder} />
+        </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           <div className="after:content relative col-span-1 row-span-2 flex flex-col items-center justify-end gap-4 overflow-hidden rounded-lg border bg-gray-200 px-6 pb-16 pt-64 text-center after:pointer-events-none after:absolute after:inset-0 after:rounded-lg lg:pt-0">
             <h1 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest">
@@ -42,7 +51,13 @@ export default async function Home() {
             </Link>
             {session && <SignOut />}
           </div>
-          {hilals.map((hilal) => (
+          {hilals
+            .filter((hilal) => 
+              (searchParams.query && searchParams.query != "") ?
+                hilal.description.toLowerCase().includes((searchParams.query as string).toLowerCase()) 
+              : hilal.description
+            )
+            .map((hilal) => (
             <div
               key={hilal.id}
               className="after:content after:shadow-highlight group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
