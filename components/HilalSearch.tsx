@@ -3,7 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function HilalSearch({baseUrl}: {baseUrl: string}) {
+export default function HilalSearch(
+  { baseUrl, placeholder }: {
+    baseUrl: string,
+    placeholder: string,
+  }
+) {
 const router = useRouter();
   const [query, setQuery] = useState("");
   const filterSearch = () => {
@@ -14,7 +19,7 @@ const router = useRouter();
   return (
     <div className="flex justify-center mb-5 py-2 ">
       <input
-        placeholder="Search for hilal..."
+        placeholder={placeholder}
         className="w-[40%] mx-1 rounded-md px-3 py-2 shadow-md border border-slate-300 focus:outline-none focus:border-p-green focus:ring-p-green focus:ring-1 sm:text-sm  placeholder:italic placeholder:text-slate-400 text-black"
         type="text"
         value={query}
