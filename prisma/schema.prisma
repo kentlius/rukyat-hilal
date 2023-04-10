@@ -9,27 +9,29 @@ datasource db {
 }
 
 model User {
-  id            Int      @id @default(autoincrement())
-  name          String
-  email         String   @unique
-  password      String
-  role          Role     @default(USER)
-  phoneNumber   String
-  institution   String
-  yearOfBirth   Int
-  gender        String
-  hilals        Hilal[]
+  id               Int     @id @default(autoincrement())
+  name             String
+  email            String  @unique
+  password         String
+  role             Role    @default(USER)
+  phoneNumber      String
+  institution      String
+  yearOfBirth      Int
+  gender           String
+  verificationCode String?
+  verified         Boolean @default(false)
+  hilals           Hilal[]
 }
 
 model Hilal {
   id          Int      @id @default(autoincrement())
-  images      Photo[]
   ownerId     Int
-  owner       User     @relation(fields: [ownerId], references: [id])
   description String
   status      Status   @default(PENDING)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  images      Photo[]
+  owner       User     @relation(fields: [ownerId], references: [id])
 }
 
 model Photo {
@@ -37,9 +39,9 @@ model Photo {
   url       String
   type      Type
   hilalId   Int
-  hilal     Hilal    @relation(fields: [hilalId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  hilal     Hilal    @relation(fields: [hilalId], references: [id], onDelete: Cascade)
 }
 
 enum Role {

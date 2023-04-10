@@ -21,6 +21,9 @@ export default NextAuth({
             email,
           },
         });
+        if (!user?.verified) {
+          throw new Error("Please verify your email");
+        }
         // if user doesn't exist or password doesn't match
         if (!user || !(await compare(password, user.password))) {
           throw new Error("Invalid username or password");
