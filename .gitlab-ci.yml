@@ -1,5 +1,7 @@
 default:
-  image: node:16.16.0
+  image:
+    name: node:18.15.0
+    pull_policy: if-not-present
 
 deploy_preview:
   stage: deploy
@@ -9,7 +11,7 @@ deploy_preview:
     - npm install --global vercel
     - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
     - vercel build --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt  --token=$VERCEL_TOKEN
+    - vercel deploy --token=$VERCEL_TOKEN
 
 deploy_production:
   stage: deploy
@@ -19,4 +21,4 @@ deploy_production:
     - npm install --global vercel
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     - vercel build --prod --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prod --token=$VERCEL_TOKEN

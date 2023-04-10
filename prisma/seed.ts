@@ -22,14 +22,6 @@ async function main() {
     },
   });
 
-  const hilals = [];
-  for (let i = 1; i <= 10; i++) {
-    hilals.push({
-      url: "https://picsum.photos/300/200",
-      description: `Hilal Result - ${i}`,
-    });
-  }
-
   const user = await prisma.user.upsert({
     where: { email: "user@example.com" },
     update: {},
@@ -42,9 +34,6 @@ async function main() {
       institution: "Example Institution",
       yearOfBirth: 2002,
       gender: "Female",
-      hilals: {
-        create: hilals,
-      },
     },
   });
 

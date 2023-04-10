@@ -81,7 +81,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           <div>
             <label
               htmlFor="name"
-              className="block text-xs text-gray-600 uppercase"
+              className="block text-xs uppercase text-gray-600"
             >
               Nama Lengkap
             </label>
@@ -97,7 +97,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           <div>
             <label
               htmlFor="yearOfBirth"
-              className="block text-xs text-gray-600 uppercase"
+              className="block text-xs uppercase text-gray-600"
             >
               Tahun Lahir
             </label>
@@ -114,7 +114,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           <div>
             <label
               htmlFor="gender"
-              className="block text-xs text-gray-600 uppercase"
+              className="block text-xs uppercase text-gray-600"
             >
               Jenis Kelamin
             </label>
@@ -132,7 +132,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           <div>
             <label
               htmlFor="phoneNumber"
-              className="block text-xs text-gray-600 uppercase"
+              className="block text-xs uppercase text-gray-600"
             >
               Nomor Telepon
             </label>
@@ -148,7 +148,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
           <div>
             <label
               htmlFor="institution"
-              className="block text-xs text-gray-600 uppercase"
+              className="block text-xs uppercase text-gray-600"
             >
               Institusi
             </label>
@@ -166,7 +166,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
       <div>
         <label
           htmlFor="email"
-          className="block text-xs text-gray-600 uppercase"
+          className="block text-xs uppercase text-gray-600"
         >
           Alamat Email
         </label>
@@ -182,7 +182,7 @@ export default function Form({ type }: { type: "login" | "register" }) {
       <div>
         <label
           htmlFor="password"
-          className="block text-xs text-gray-600 uppercase"
+          className="block text-xs uppercase text-gray-600"
         >
           Kata Sandi
         </label>
