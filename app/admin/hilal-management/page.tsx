@@ -17,13 +17,14 @@ export default async function HilalManagement(
     searchParams: { [key: string]: string | string[] | undefined },
   }
 ) {
-    const baseUrl = "/admin/hilal-management";
     const hilals = await getHilals();
+    const baseUrl = "/admin/hilal-management";
+    const searchPlaceholder = "Search by status (ex: 'approved') or description (ex: 'ramadhan')";
   
     return (
         <div className="flex flex-col px-10 py-6">
             <h1 className="text-2xl font-semibold my-4">Manajemen Hilal</h1>
-            <HilalSearch baseUrl={baseUrl}/>
+            <HilalSearch baseUrl={baseUrl} placeholder={searchPlaceholder} />
 
             <div className="flex flex-wrap pb-8 justify-center gap-x-12 gap-y-8">
                 <Suspense fallback={<div>Fetching data...</div>}>
