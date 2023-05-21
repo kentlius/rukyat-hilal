@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id               Int     @id @default(autoincrement())
+  name             String
+  email            String  @unique
+  password         String
+  role             Role    @default(USER)
+  phoneNumber      String
+  institution      String
+  yearOfBirth      Int
+  gender           String
+  verificationCode String?
+  verified         Boolean @default(false)
+  hilals           Hilal[]
+}
+
+model Hilal {
+  id          Int      @id @default(autoincrement())
+  ownerId     Int
+  description String
+  status      Status   @default(PENDING)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      Photo[]
+  owner       User     @relation(fields: [ownerId], references: [id])
+}
+
+model Photo {
+  id        String   @id
+  url       String
+  type      Type
+  hilalId   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  hilal     Hilal    @relation(fields: [hilalId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum Type {
+  CAMERA
+  TELESCOPE
+}
