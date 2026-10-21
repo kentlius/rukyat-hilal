@@ -1,8 +1,19 @@
 # Sistem Informasi Rukyat Hilal
 
-> For [Imahnoong](https://imahnoong.com/) 🔭
+> Built for [Imahnoong](https://imahnoong.com/) to report and verify hilal
+> observations.
 
-[https://rukyat-hilal.vercel.app/](https://rukyat-hilal.vercel.app/)
+> Demo: not currently deployed. The previous Vercel URL is offline.
+
+## Features
+
+- Register and sign in with email verification
+- Submit hilal observations with camera or telescope images
+- Browse and search the public observation gallery
+- Manage your own submissions from a dashboard
+- Admin review, approval, rejection, editing, and deletion
+- Azimuth/altitude calculator for observation planning
+- Installable progressive web app with an offline fallback
 
 ## Setup Project
 
@@ -17,13 +28,15 @@
 
 ### Database
 
-Host Local [MySQL](https://www.mysql.com/) or Create Database on [PlanetScale](https://planetscale.com/).
+Host Local [MySQL](https://www.mysql.com/) or create a database on
+[PlanetScale](https://planetscale.com/).
 
 ---
 
 ### Environment
 
-Copy file [`.env.example`](.env.example) to `.env` and fill the environment variables
+Copy file [`.env.example`](.env.example) to `.env` and fill the environment
+variables.
 
 ---
 
@@ -56,3 +69,7 @@ yarn dev
 # or
 pnpm dev
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE).
