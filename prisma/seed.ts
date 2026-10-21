@@ -4,8 +4,15 @@ import { hash } from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  const adminPassword = await hash("change-me-admin", 10);
-  const userPassword = await hash("change-me-user", 10);
+  // Development seed data only. Set these values in your local environment.
+  const adminPassword = await hash(
+    process.env.SEED_ADMIN_PASSWORD ?? "change-me-admin",
+    10
+  );
+  const userPassword = await hash(
+    process.env.SEED_USER_PASSWORD ?? "change-me-user",
+    10
+  );
 
   const admin = await prisma.user.upsert({
     where: { email: "admin@example.com" },
